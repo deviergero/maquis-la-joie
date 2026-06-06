@@ -218,7 +218,7 @@
             margin-bottom: 25px;
         }
 
-        /* --- TRANSPARENCE & VÉRITÉ GRID (Nouveau) --- */
+        /* --- TRANSPARENCE & VÉRITÉ GRID --- */
         .truth-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -314,19 +314,23 @@
 
         .payment-methods p { font-size: 0.9rem; text-transform: uppercase; color: var(--1win-cyan); font-weight: 700; margin-bottom: 20px; }
         
+        /* --- BADGE WAVE CORRIGÉ (Logo en haut, numéro en bas) --- */
         .wave-badge {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column; /* Aligne le pingouin au-dessus du texte */
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
             background: rgba(28, 228, 248, 0.1);
             border: 1px solid rgba(28, 228, 248, 0.3);
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-size: 1.4rem;
+            padding: 15px 25px;
+            border-radius: 16px;
+            margin: 0 auto;
+            width: fit-content;
         }
 
-        .wave-text { font-weight: 900; letter-spacing: -0.5px; color: var(--text-main); }
-        .wave-number { color: var(--wave-color); font-weight: 900; letter-spacing: 2px; }
+        .wave-text { font-weight: 700; font-size: 0.9rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px; }
+        .wave-number { color: var(--wave-color); font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; }
 
         .btn-whatsapp {
             background: var(--success);
@@ -375,6 +379,7 @@
             .glass-card { padding: 25px; }
             nav { padding: 15px 20px; }
             .truth-card { padding: 20px; }
+            .wave-number { font-size: 1.4rem; } /* Légère réduction pour très petits écrans */
         }
     </style>
 </head>
@@ -501,14 +506,23 @@
 
             <div class="payment-methods">
                 <p>Paiement Unique Sécurisé</p>
-                <!-- Badge Wave stylisé avec Logo SVG -->
+                <!-- Badge Wave Corrigé avec Pingouin SVG au-dessus -->
                 <div class="wave-badge">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="var(--wave-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="12" cy="12" r="3" stroke="var(--wave-color)" stroke-width="2"/>
+                    <svg width="45" height="45" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 C30 10 20 40 20 70 C20 90 35 95 50 95 C65 95 80 90 80 70 C80 40 70 10 50 10 Z" fill="var(--wave-color)"/>
+                        <path d="M50 35 C35 35 30 60 30 75 C30 85 40 90 50 90 C60 90 70 85 70 75 C70 60 65 35 50 35 Z" fill="#FFFFFF"/>
+                        <circle cx="42" cy="28" r="4" fill="#FFFFFF"/>
+                        <circle cx="42" cy="28" r="1.5" fill="#000000"/>
+                        <circle cx="58" cy="28" r="4" fill="#FFFFFF"/>
+                        <circle cx="58" cy="28" r="1.5" fill="#000000"/>
+                        <polygon points="45,33 55,33 50,40" fill="#FFC107"/>
+                        <path d="M22 45 C10 55 10 70 15 75 C20 70 25 55 22 45 Z" fill="var(--wave-color)"/>
+                        <path d="M78 45 C90 55 90 70 85 75 C80 70 75 55 78 45 Z" fill="var(--wave-color)"/>
+                        <path d="M30 90 C25 95 25 100 35 98 Z" fill="#FFC107"/>
+                        <path d="M70 90 C75 95 75 100 65 98 Z" fill="#FFC107"/>
                     </svg>
-                    <span class="wave-text">wave</span>
-                    <span class="wave-number">0105500232</span>
+                    <span class="wave-text">Dépôt Wave</span>
+                    <span class="wave-number">01 05 50 02 32</span>
                 </div>
             </div>
 
