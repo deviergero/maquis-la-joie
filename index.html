@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Lucky Jet | Jouez en Direct</title>
+    <title>Team Lucky Jet | Analyse & Stratégie</title>
     <style>
-        /* --- RESET ET TYPOGRAPHIE --- */
+        /* --- RESET & TYPOGRAPHIE PREMIUM --- */
+        :root {
+            --bg-main: #0a0a0a;
+            --bg-card: #111111;
+            --border-color: #222222;
+            --text-primary: #ededed;
+            --text-secondary: #888888;
+            --accent-blue: #0070f3;
+            --accent-hover: #005bb5;
+            --danger: #e60000;
+            --success: #00a859;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0b1120;
-            color: #f8fafc;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
             line-height: 1.6;
-            padding-top: 70px;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 60px;
         }
 
         /* --- NAVIGATION --- */
@@ -26,451 +39,497 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #38bdf8;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 24px;
         }
 
         .nav-links a {
-            color: #cbd5e1;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: #38bdf8;
+            color: var(--text-primary);
         }
 
-        /* --- STRUCTURE DES SECTIONS --- */
+        /* --- STRUCTURE GLOBALE --- */
         section {
-            padding: 80px 5%;
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: #f8fafc;
-            margin-bottom: 50px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
         }
-
-        .section-title span {
-            color: #38bdf8;
-        }
-
-        .bg-dark { background-color: #0b1120; }
-        .bg-light { background-color: #111827; }
 
         /* --- HERO SECTION --- */
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 100px 5%;
-            background: radial-gradient(circle at center, #1e293b 0%, #0b1120 100%);
+            padding: 120px 5% 80px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hero h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            max-width: 800px;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #94a3b8;
+            color: var(--text-secondary);
             max-width: 600px;
             margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            text-align: center;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
-            display: inline-block;
-            background-color: #3b82f6;
-            color: white;
-            padding: 15px 35px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            width: 100%;
-            max-width: 350px;
+            background-color: var(--text-primary);
+            color: var(--bg-main);
         }
 
         .btn-primary:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            background-color: #ffffff;
+            transform: translateY(-1px);
         }
 
-        .btn-action {
-            background-color: #ef4444; 
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-            margin-top: 20px;
-        }
-        
-        .btn-action:hover {
-            background-color: #dc2626;
-            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.5);
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            margin-left: 15px;
         }
 
-        /* --- PRESENTATION --- */
+        .btn-outline:hover {
+            border-color: var(--text-secondary);
+            background-color: var(--bg-card);
+        }
+
+        /* --- GRILLE CONTENU (Image/Texte) --- */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr;
             gap: 40px;
-            max-width: 1100px;
-            margin: 0 auto;
             align-items: center;
+            margin-bottom: 80px;
         }
 
         @media (min-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr 1fr;
+                gap: 60px;
             }
         }
 
-        .text-box h3 {
-            font-size: 1.5rem;
-            color: #38bdf8;
+        .content-box h3 {
+            font-size: 1.4rem;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
-        .text-box p {
-            color: #cbd5e1;
+        .content-box p {
+            color: var(--text-secondary);
             margin-bottom: 20px;
+            font-size: 1.05rem;
         }
 
-        /* Sécurisation de l'affichage des médias (Image et Vidéo) */
         .media-box img, .media-box video {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #334155;
-            background-color: #0f172a;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
         }
 
-        /* --- AVANTAGES & INCONVENIENTS --- */
-        .pros-cons-grid {
+        .btn-action {
+            background-color: var(--accent-blue);
+            color: white;
+            margin-top: 10px;
+        }
+        
+        .btn-action:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* --- AVANTAGES / RISQUES --- */
+        .specs-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
+            gap: 20px;
         }
 
         @media (min-width: 768px) {
-            .pros-cons-grid {
+            .specs-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
-        .pros-box, .cons-box {
-            background: #1e293b;
-            padding: 30px;
-            border-radius: 12px;
-        }
-
-        .pros-box { border-top: 4px solid #22c55e; }
-        .cons-box { border-top: 4px solid #ef4444; }
-
-        .pros-box h3 { color: #22c55e; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .cons-box h3 { color: #ef4444; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-
-        .list-items li {
-            list-style: none;
-            margin-bottom: 15px;
-            color: #cbd5e1;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        /* --- GROUPE VIP --- */
-        .pricing-card {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            max-width: 700px;
-            margin: 0 auto;
+        .spec-card {
+            background: var(--bg-card);
             padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid #334155;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
         }
 
-        .price {
-            font-size: 2.5rem;
-            color: #22c55e;
-            font-weight: bold;
-            margin: 10px 0;
+        .spec-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
         }
 
-        .price span { font-size: 1rem; color: #94a3b8; }
+        .pros-title { color: var(--success); }
+        .cons-title { color: var(--danger); }
 
-        .vip-transparency {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
-            text-align: left;
-            border: 1px dashed #475569;
+        .spec-list {
+            list-style: none;
         }
 
-        .vip-transparency h4 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            margin-top: 15px;
-        }
-
-        .vip-transparency h4:first-child { margin-top: 0; }
-        
-        .vip-transparency ul {
-            margin-left: 20px;
-            color: #cbd5e1;
+        .spec-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
             font-size: 0.95rem;
         }
 
-        .vip-transparency li { margin-bottom: 8px; }
-
-        .payment-methods {
-            background: #0b1120;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
-            text-align: left;
+        .spec-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--border-color);
         }
 
-        .payment-methods p { color: #38bdf8; font-weight: bold; margin-bottom: 15px; text-align: center; }
-        .payment-methods ul { list-style: none; }
-        .payment-methods li {
+        /* --- ABONNEMENT VIP --- */
+        .pricing-section {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 500px;
+            padding: 50px 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 20px 0;
+            letter-spacing: -1px;
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: normal;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 30px 0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features-list li::before {
+            content: "•";
+            margin-right: 10px;
+            color: var(--accent-blue);
+        }
+
+        .payment-info {
+            background: var(--bg-main);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .payment-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .payment-networks {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .network-row {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #1e293b;
-            color: #f8fafc;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
         }
-        .payment-methods li:last-child { border-bottom: none; }
+
+        .network-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .network-row span { color: var(--text-secondary); }
 
         .btn-whatsapp {
-            display: block;
-            background-color: #25D366;
-            color: white;
-            padding: 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            background-color: var(--success);
+            color: var(--bg-main);
             width: 100%;
+            display: block;
+            font-weight: 600;
         }
 
-        .btn-whatsapp:hover { background-color: #1da851; transform: translateY(-2px); }
+        .btn-whatsapp:hover {
+            background-color: #00c066;
+        }
 
         /* --- FOOTER --- */
         footer {
-            text-align: center;
-            padding: 30px;
-            background: #0b1120;
-            color: #475569;
-            border-top: 1px solid #1e293b;
+            padding: 40px 5%;
+            text-align: left;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        /* =========================================
-           RÉGLAGES SPÉCIFIQUES POUR TÉLÉPHONES
-           (Correction de l'espacement sur mobile)
-           ========================================= */
+
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            /* Barre de navigation */
             .nav-links { display: none; }
-            nav { padding: 15px 20px; }
-
-            /* Espacements globaux des sections réduits */
-            section { padding: 50px 20px; }
-            .section-title { font-size: 1.8rem; margin-bottom: 30px; }
-
-            /* Accueil (Hero) allégé */
-            .hero { padding: 60px 20px; }
+            
+            section { padding: 60px 20px; }
+            .hero { padding: 100px 20px 60px; }
+            
             .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.05rem; margin-bottom: 30px; }
-
-            /* Carte VIP aérée */
-            .pricing-card { padding: 25px 15px; }
-            .price { font-size: 2rem; }
+            .hero p { font-size: 1.05rem; }
             
-            /* Boîtes Avantages/Inconvénients aérées */
-            .pros-box, .cons-box { padding: 20px 15px; }
-            .pros-box h3, .cons-box h3 { font-size: 1.2rem; }
-
-            /* Boîte de transparence VIP */
-            .vip-transparency { padding: 15px; }
-            .vip-transparency h4 { font-size: 1rem; }
+            .btn { display: block; width: 100%; margin: 0 0 15px 0; }
             
-            /* Boutons ajustés */
-            .btn-whatsapp { font-size: 1rem; padding: 15px 10px; }
-            .btn-primary { font-size: 1rem; padding: 15px 20px; }
-
-            /* Grille de texte */
-            .grid-container { gap: 30px; }
-            .text-box h3 { font-size: 1.3rem; }
-            .text-box p { font-size: 0.95rem; }
+            .pricing-card { padding: 30px 20px; }
+            
+            footer { flex-direction: column; text-align: center; gap: 10px; padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION -->
+    <!-- NAVIGATION -->
     <nav>
-        <a href="#" class="logo">Team Lucky Jet</a>
+        <a href="#" class="logo">Team Lucky Jet.</a>
         <div class="nav-links">
-            <a href="#presentation">Le Jeu</a>
+            <a href="#plateforme">Plateforme</a>
             <a href="#analyse">Analyse</a>
-            <a href="#vip">Accès VIP</a>
+            <a href="#vip">Accès Privé</a>
         </div>
     </nav>
 
-    <!-- SECTION HERO -->
-    <section class="hero bg-dark">
-        <h1>Faites décoller vos gains<br><span style="color: #38bdf8;">en équipe.</span></h1>
-        <p>Rejoignez la communauté. Découvrez mes stratégies en direct, comprenez le jeu et synchronisez vos retraits avec nous.</p>
-        <a href="#vip" class="btn-primary">Rejoindre le Groupe VIP</a>
-    </section>
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <h1>Stratégie et Analyse sur Lucky Jet.</h1>
+        <p>Rejoignez un cercle de joueurs structuré. Accédez à nos sessions en direct, maîtrisez votre gestion du risque et coordonnez vos retraits de manière méthodique.</p>
+        <div class="hero-buttons">
+            <a href="#vip" class="btn btn-primary">Rejoindre le cercle VIP</a>
+            <a href="#plateforme" class="btn btn-outline">Découvrir le fonctionnement</a>
+        </div>
+    </header>
 
-    <!-- SECTION PRÉSENTATION & TUTORIEL -->
-    <section id="presentation" class="bg-light">
-        <h2 class="section-title">Comment ça <span>fonctionne ?</span></h2>
+    <!-- PRÉSENTATION & TUTORIEL -->
+    <section id="plateforme">
+        <div class="section-header">
+            <h2 class="section-title">Infrastructure et Fonctionnement</h2>
+        </div>
         
         <div class="grid-container">
-            <div class="text-box">
-                <h3>Le Jeu : Lucky Jet</h3>
-                <p>L'objectif est d'encaisser vos gains avant que le personnage ne s'envole. C'est un jeu qui demande du sang-froid et une bonne analyse des statistiques. C'est exactement ce qu'on fait en direct en appliquant des méthodes précises.</p>
+            <div class="content-box">
+                <h3>Mécanique de jeu</h3>
+                <p>Lucky Jet repose sur la prédiction de l'évolution d'un multiplicateur. Notre approche consiste à ne pas laisser place au hasard, en appliquant une analyse statistique en temps réel pour déterminer les moments optimaux de retrait.</p>
             </div>
-            
             <div class="media-box">
-                <!-- Image du jeu -->
-                <img src="luckyjet.jpg" alt="Interface Lucky Jet">
+                <img src="luckyjet.jpg" alt="Aperçu de l'interface Lucky Jet">
             </div>
         </div>
 
-        <div class="grid-container" style="margin-top: 40px;">
+        <div class="grid-container">
             <div class="media-box">
-                <!-- Vidéo Tutoriel d'inscription -->
                 <video controls playsinline>
                     <source src="mavideo.mp4" type="video/mp4">
-                    Votre navigateur ne supporte pas la lecture de vidéos.
+                    Votre navigateur ne supporte pas la lecture vidéo.
                 </video>
             </div>
-
-            <div class="text-box">
-                <h3>Tutoriel d'Inscription</h3>
-                <p>La première étape est d'avoir un compte configuré correctement. Regardez la vidéo ci-contre pour voir étape par étape comment créer votre compte sur 1win, la plateforme la plus stable pour jouer.</p>
-                
-                <!-- Lien d'inscription 1win actif -->
-                <a href="https://1win.com/?p=iu9l" target="_blank" class="btn-primary btn-action">
-                    Créer mon compte 1win
+            <div class="content-box">
+                <h3>Configuration du compte</h3>
+                <p>Nous opérons exclusivement sur 1win pour des raisons de stabilité technique et de rapidité d'exécution des transactions via les réseaux de Mobile Money locaux.</p>
+                <p>Visionnez la documentation vidéo ci-contre pour configurer correctement votre espace avant toute session.</p>
+                <a href="https://1win.com/?p=iu9l" target="_blank" class="btn btn-action">
+                    Créer un compte 1win
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION AVANTAGES / INCONVENIENTS -->
-    <section id="analyse" class="bg-dark">
-        <h2 class="section-title">Analyse <span>Transparente</span></h2>
+    <!-- AVANTAGES / RISQUES -->
+    <section id="analyse">
+        <div class="section-header">
+            <h2 class="section-title">Évaluation des conditions</h2>
+        </div>
         
-        <div class="pros-cons-grid">
-            <div class="pros-box">
-                <h3>✅ Les Avantages</h3>
-                <ul class="list-items">
-                    <li>Jouable partout directement depuis votre smartphone.</li>
-                    <li>Possibilité de réaliser des profits rapides si la stratégie est respectée.</li>
-                    <li>Retraits instantanés sur vos comptes Mobile Money locaux.</li>
+        <div class="specs-grid">
+            <div class="spec-card">
+                <h3 class="pros-title">Points forts du système</h3>
+                <ul class="spec-list">
+                    <li>Exécution rapide des trades depuis n'importe quel appareil mobile.</li>
+                    <li>Liquidité immédiate grâce aux retraits instantanés via Mobile Money.</li>
+                    <li>Réduction de la volatilité personnelle grâce à la prise de décision en groupe.</li>
                 </ul>
             </div>
 
-            <div class="cons-box">
-                <h3>⚠️ Les Risques</h3>
-                <ul class="list-items">
-                    <li>Cela reste un jeu, le risque de perte de la mise existe toujours.</li>
-                    <li>Demande une discipline de fer : l'appât du gain fait faire des erreurs.</li>
-                    <li>Très addictif. Ne jouez que l'argent que vous êtes prêt à perdre.</li>
+            <div class="spec-card">
+                <h3 class="cons-title">Avertissement sur les risques</h3>
+                <ul class="spec-list">
+                    <li>Le risque de perte totale du capital engagé est inhérent à la plateforme.</li>
+                    <li>Nécessite un contrôle émotionnel strict. Les écarts stratégiques entraînent des pertes.</li>
+                    <li>Service strictement réservé à un public averti. N'engagez que le capital alloué à ce risque.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- SECTION VIP -->
-    <section id="vip" class="bg-light">
-        <h2 class="section-title">L'Accès <span>Privé</span></h2>
+    <!-- ABONNEMENT VIP -->
+    <section id="vip">
+        <div class="section-header">
+            <h2 class="section-title">Accès Privé</h2>
+        </div>
         
-        <div class="pricing-card">
-            <h3>Groupe WhatsApp VIP</h3>
-            
-            <div class="price">
-                2000 FCFA <span>/ 2 semaines</span>
-            </div>
+        <div class="pricing-section">
+            <div class="pricing-card">
+                <h3>Pass Stratégique VIP</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Accès complet au canal de communication fermé.</p>
+                
+                <div class="price-tag">
+                    2000 FCFA <span>/ 14 jours</span>
+                </div>
 
-            <!-- BOÎTE DE TRANSPARENCE VIP -->
-            <div class="vip-transparency">
-                <h4 style="color: #38bdf8;">💎 Ce que l'abonnement inclut :</h4>
-                <ul>
-                    <li>Mes alertes "sniper" en direct pour coordonner nos retraits.</li>
-                    <li>Des analyses détaillées sur les tendances du jeu avant de miser.</li>
-                    <li>L'accès à une communauté sérieuse et motivée, sans spam.</li>
+                <ul class="features-list">
+                    <li>Sessions d'analyse et signaux d'entrée en temps réel.</li>
+                    <li>Étude des tendances algorithmiques de la plateforme.</li>
+                    <li>Accès à un réseau de joueurs disciplinés.</li>
                 </ul>
 
-                <h4 style="color: #ef4444;">⚖️ La Réalité (À savoir avant de payer) :</h4>
-                <ul>
-                    <li>Il n'y a <strong>aucune garantie de gain à 100%</strong>. Le risque zéro n'existe pas.</li>
-                    <li>Les 2000 FCFA couvrent mon temps d'analyse et la gestion du groupe privé, ce n'est pas une formule magique pour devenir riche.</li>
-                    <li>Vous devez accepter de perdre certains jours pour rester rentable sur le long terme.</li>
-                </ul>
+                <div class="divider"></div>
+
+                <div class="payment-info">
+                    <p>Coordonnées de dépôt sécurisé</p>
+                    <div class="payment-networks">
+                        <div class="network-row">
+                            <span>Wave</span>
+                            <strong>01 05 50 02 32</strong>
+                        </div>
+                        <div class="network-row">
+                            <span>Orange Money</span>
+                            <strong>01 05 50 02 32</strong>
+                        </div>
+                        <div class="network-row">
+                            <span>MTN Money</span>
+                            <strong>01 05 50 02 32</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/2250716518996?text=Bonjour,%20je%20viens%20d'effectuer%20le%20paiement%20de%202000%20FCFA%20sur%20le%200105500232%20pour%20l'accès%20VIP.%20Voici%20le%20reçu%20de%20transaction%20:" class="btn btn-whatsapp" target="_blank">
+                    Soumettre la preuve de paiement
+                </a>
             </div>
-
-            <div class="payment-methods">
-                <p>Étape 1 : Effectuez le dépôt pour valider votre place</p>
-                <ul>
-                    <!-- Numéros de dépôt -->
-                    <li><span>Wave</span> <strong>01 05 50 02 32</strong></li>
-                    <li><span>Orange</span> <strong>01 05 50 02 32</strong></li>
-                    <li><span>MTN</span> <strong>01 05 50 02 32</strong></li>
-                </ul>
-            </div>
-
-            <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 0.95rem;">Étape 2 : Cliquez ci-dessous pour m'envoyer la capture d'écran du transfert.</p>
-
-            <!-- Bouton WhatsApp -->
-            <a href="https://wa.me/2250716518996?text=Salut,%20je%20viens%20de%20payer%20mes%202000%20FCFA%20sur%20le%200105500232%20pour%20le%20groupe%20VIP.%20J'ai%20lu%20les%20conditions.%20Voici%20ma%20capture%20d'écran%20:" class="btn-whatsapp" target="_blank">
-                📲 Envoyer la preuve sur WhatsApp
-            </a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 - L'équipe Lucky Jet. Strictement interdit aux moins de 18 ans.</p>
+        <div>&copy; 2026 Team Lucky Jet. Tous droits réservés.</div>
+        <div>Strictement interdit aux mineurs. Jouez de manière responsable.</div>
     </footer>
 
 </body>
