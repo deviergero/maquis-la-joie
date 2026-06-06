@@ -115,6 +115,8 @@
             border: none;
             cursor: pointer;
             text-align: center;
+            width: 100%;
+            max-width: 350px;
         }
 
         .btn-primary:hover {
@@ -126,6 +128,7 @@
         .btn-action {
             background-color: #ef4444; 
             box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            margin-top: 20px;
         }
         
         .btn-action:hover {
@@ -168,7 +171,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border: 1px solid #334155;
-            background-color: #0f172a; /* Fond si la vidéo met du temps à charger */
+            background-color: #0f172a;
         }
 
         /* --- AVANTAGES & INCONVENIENTS --- */
@@ -282,6 +285,7 @@
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.3s;
+            width: 100%;
         }
 
         .btn-whatsapp:hover { background-color: #1da851; transform: translateY(-2px); }
@@ -295,8 +299,44 @@
             border-top: 1px solid #1e293b;
         }
         
-        @media (max-width: 600px) {
+        /* =========================================
+           RÉGLAGES SPÉCIFIQUES POUR TÉLÉPHONES
+           (Correction de l'espacement sur mobile)
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Barre de navigation */
             .nav-links { display: none; }
+            nav { padding: 15px 20px; }
+
+            /* Espacements globaux des sections réduits */
+            section { padding: 50px 20px; }
+            .section-title { font-size: 1.8rem; margin-bottom: 30px; }
+
+            /* Accueil (Hero) allégé */
+            .hero { padding: 60px 20px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.05rem; margin-bottom: 30px; }
+
+            /* Carte VIP aérée */
+            .pricing-card { padding: 25px 15px; }
+            .price { font-size: 2rem; }
+            
+            /* Boîtes Avantages/Inconvénients aérées */
+            .pros-box, .cons-box { padding: 20px 15px; }
+            .pros-box h3, .cons-box h3 { font-size: 1.2rem; }
+
+            /* Boîte de transparence VIP */
+            .vip-transparency { padding: 15px; }
+            .vip-transparency h4 { font-size: 1rem; }
+            
+            /* Boutons ajustés */
+            .btn-whatsapp { font-size: 1rem; padding: 15px 10px; }
+            .btn-primary { font-size: 1rem; padding: 15px 20px; }
+
+            /* Grille de texte */
+            .grid-container { gap: 30px; }
+            .text-box h3 { font-size: 1.3rem; }
+            .text-box p { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -330,14 +370,14 @@
             </div>
             
             <div class="media-box">
-                <!-- Image du jeu (le fichier s'appelle luckyjet.jpg) -->
+                <!-- Image du jeu -->
                 <img src="luckyjet.jpg" alt="Interface Lucky Jet">
             </div>
         </div>
 
-        <div class="grid-container" style="margin-top: 60px;">
+        <div class="grid-container" style="margin-top: 40px;">
             <div class="media-box">
-                <!-- Vidéo Tutoriel d'inscription (le fichier s'appelle mavideo.mp4) -->
+                <!-- Vidéo Tutoriel d'inscription -->
                 <video controls playsinline>
                     <source src="mavideo.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la lecture de vidéos.
@@ -349,7 +389,7 @@
                 <p>La première étape est d'avoir un compte configuré correctement. Regardez la vidéo ci-contre pour voir étape par étape comment créer votre compte sur 1win, la plateforme la plus stable pour jouer.</p>
                 
                 <!-- Lien d'inscription 1win actif -->
-                <a href="https://1win.com/?p=iu9l" target="_blank" class="btn-primary btn-action" style="margin-top: 15px;">
+                <a href="https://1win.com/?p=iu9l" target="_blank" class="btn-primary btn-action">
                     Créer mon compte 1win
                 </a>
             </div>
@@ -414,8 +454,8 @@
                 <ul>
                     <!-- Numéros de dépôt -->
                     <li><span>Wave</span> <strong>01 05 50 02 32</strong></li>
-                    <li><span>Orange Money</span> <strong>01 05 50 02 32</strong></li>
-                    <li><span>MTN Money</span> <strong>01 05 50 02 32</strong></li>
+                    <li><span>Orange</span> <strong>01 05 50 02 32</strong></li>
+                    <li><span>MTN</span> <strong>01 05 50 02 32</strong></li>
                 </ul>
             </div>
 
