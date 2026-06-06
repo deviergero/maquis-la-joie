@@ -11,14 +11,14 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth; /* Défilement fluide pour le menu */
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0b1120; /* Fond très sombre premium */
+            background-color: #0b1120;
             color: #f8fafc;
             line-height: 1.6;
-            padding-top: 70px; /* Espace pour la barre de navigation fixe */
+            padding-top: 70px;
         }
 
         /* --- NAVIGATION --- */
@@ -76,11 +76,10 @@
             color: #38bdf8;
         }
 
-        /* Fonds alternés pour séparer les parties */
         .bg-dark { background-color: #0b1120; }
         .bg-light { background-color: #111827; }
 
-        /* --- HERO SECTION (Accueil) --- */
+        /* --- HERO SECTION --- */
         .hero {
             display: flex;
             flex-direction: column;
@@ -104,6 +103,7 @@
         }
 
         .btn-primary {
+            display: inline-block;
             background-color: #3b82f6;
             color: white;
             padding: 15px 35px;
@@ -114,6 +114,7 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            text-align: center;
         }
 
         .btn-primary:hover {
@@ -122,7 +123,17 @@
             box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
         }
 
-        /* --- PRESENTATION (Grille 2 colonnes sur PC) --- */
+        .btn-action {
+            background-color: #ef4444; /* Rouge pour bien différencier l'inscription 1win */
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+        
+        .btn-action:hover {
+            background-color: #dc2626;
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.5);
+        }
+
+        /* --- PRESENTATION --- */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr;
@@ -192,10 +203,10 @@
             gap: 10px;
         }
 
-        /* --- GROUPE VIP (Carte de prix) --- */
+        /* --- GROUPE VIP --- */
         .pricing-card {
             background: linear-gradient(145deg, #1e293b, #0f172a);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 40px;
             border-radius: 20px;
@@ -208,10 +219,35 @@
             font-size: 2.5rem;
             color: #22c55e;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         .price span { font-size: 1rem; color: #94a3b8; }
+
+        .vip-transparency {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+            border: 1px dashed #475569;
+        }
+
+        .vip-transparency h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        .vip-transparency h4:first-child { margin-top: 0; }
+        
+        .vip-transparency ul {
+            margin-left: 20px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .vip-transparency li { margin-bottom: 8px; }
 
         .payment-methods {
             background: #0b1120;
@@ -236,7 +272,7 @@
             display: block;
             background-color: #25D366;
             color: white;
-            padding: 15px;
+            padding: 18px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
@@ -244,7 +280,7 @@
             transition: all 0.3s;
         }
 
-        .btn-whatsapp:hover { background-color: #1da851; }
+        .btn-whatsapp:hover { background-color: #1da851; transform: translateY(-2px); }
 
         /* --- FOOTER --- */
         footer {
@@ -255,7 +291,6 @@
             border-top: 1px solid #1e293b;
         }
         
-        /* Masquer le menu sur petit écran pour faire propre */
         @media (max-width: 600px) {
             .nav-links { display: none; }
         }
@@ -268,48 +303,50 @@
         <a href="#" class="logo">Team Lucky Jet</a>
         <div class="nav-links">
             <a href="#presentation">Le Jeu</a>
-            <a href="#analyse">Pour / Contre</a>
+            <a href="#analyse">Analyse</a>
             <a href="#vip">Accès VIP</a>
         </div>
     </nav>
 
-    <!-- SECTION HERO (Accueil) -->
+    <!-- SECTION HERO -->
     <section class="hero bg-dark">
         <h1>Faites décoller vos gains<br><span style="color: #38bdf8;">en équipe.</span></h1>
         <p>Rejoignez la communauté. Découvrez mes stratégies en direct, comprenez le jeu et synchronisez vos retraits avec nous.</p>
         <a href="#vip" class="btn-primary">Rejoindre le Groupe VIP</a>
     </section>
 
-    <!-- SECTION PRÉSENTATION -->
+    <!-- SECTION PRÉSENTATION & TUTORIEL -->
     <section id="presentation" class="bg-light">
         <h2 class="section-title">Comment ça <span>fonctionne ?</span></h2>
         
         <div class="grid-container">
             <div class="text-box">
-                <h3>La Plateforme : 1win</h3>
-                <p>J'utilise 1win car c'est aujourd'hui la plateforme la plus stable pour ce type de jeu. Les inscriptions prennent 2 minutes et les transactions (dépôts/retraits) sont directement reliées à vos comptes Mobile Money locaux (Wave, Orange, MTN).</p>
-                
                 <h3>Le Jeu : Lucky Jet</h3>
-                <p>L'objectif est d'encaisser vos gains avant que le personnage ne s'envole. C'est un jeu qui demande du sang-froid et une bonne analyse des statistiques. C'est exactement ce qu'on fait en direct.</p>
+                <p>L'objectif est d'encaisser vos gains avant que le personnage ne s'envole. C'est un jeu qui demande du sang-froid et une bonne analyse des statistiques. C'est exactement ce qu'on fait en direct en appliquant des méthodes précises.</p>
             </div>
             
             <div class="media-box">
-                <!-- Assure-toi que ton image s'appelle "luckyjet.jpg" -->
+                <!-- Image du jeu -->
                 <img src="luckyjet.jpg" alt="Interface Lucky Jet">
             </div>
         </div>
 
-        <div class="grid-container" style="margin-top: 50px;">
+        <div class="grid-container" style="margin-top: 60px;">
             <div class="media-box">
-                <!-- Assure-toi que ta vidéo s'appelle "mavideo.mp4" -->
+                <!-- Vidéo Tutoriel d'inscription -->
                 <video controls>
                     <source src="mavideo.mp4" type="video/mp4">
                 </video>
             </div>
 
             <div class="text-box">
-                <h3>La Stratégie de groupe</h3>
-                <p>Regardez la vidéo ci-contre pour comprendre comment nous jouons. L'avantage de jouer en même temps lors de mes lives, c'est de limiter la prise de risque et de viser des multiplicateurs précis de manière coordonnée.</p>
+                <h3>Tutoriel d'Inscription</h3>
+                <p>La première étape est d'avoir un compte configuré correctement. Regardez la vidéo ci-contre pour voir étape par étape comment créer votre compte sur 1win, la plateforme la plus stable pour jouer.</p>
+                
+                <!-- METS TON LIEN 1WIN À LA PLACE DE "TON_LIEN_ICI" -->
+                <a href="TON_LIEN_ICI" target="_blank" class="btn-primary btn-action" style="margin-top: 15px;">
+                    Créer mon compte 1win
+                </a>
             </div>
         </div>
     </section>
@@ -319,24 +356,21 @@
         <h2 class="section-title">Analyse <span>Transparente</span></h2>
         
         <div class="pros-cons-grid">
-            <!-- Les Pours -->
             <div class="pros-box">
                 <h3>✅ Les Avantages</h3>
                 <ul class="list-items">
                     <li>Jouable partout directement depuis votre smartphone.</li>
                     <li>Possibilité de réaliser des profits rapides si la stratégie est respectée.</li>
-                    <li>Retraits instantanés sur vos comptes Mobile Money.</li>
-                    <li>L'esprit d'équipe : on gagne ensemble, on analyse ensemble.</li>
+                    <li>Retraits instantanés sur vos comptes Mobile Money locaux.</li>
                 </ul>
             </div>
 
-            <!-- Les Contres -->
             <div class="cons-box">
-                <h3>⚠️ Les Inconvénients / Risques</h3>
+                <h3>⚠️ Les Risques</h3>
                 <ul class="list-items">
-                    <li>Cela reste un jeu d'argent, le risque de perte totale de la mise existe toujours.</li>
-                    <li>Demande une discipline de fer : l'appât du gain peut faire perdre le contrôle.</li>
-                    <li>Très addictif. Ne jouez que ce que vous êtes prêt à perdre.</li>
+                    <li>Cela reste un jeu, le risque de perte de la mise existe toujours.</li>
+                    <li>Demande une discipline de fer : l'appât du gain fait faire des erreurs.</li>
+                    <li>Très addictif. Ne jouez que l'argent que vous êtes prêt à perdre.</li>
                 </ul>
             </div>
         </div>
@@ -348,14 +382,30 @@
         
         <div class="pricing-card">
             <h3>Groupe WhatsApp VIP</h3>
-            <p style="color: #cbd5e1; margin-top: 10px;">Signaux en direct, analyses approfondies et sessions privées.</p>
             
             <div class="price">
                 2000 FCFA <span>/ 2 semaines</span>
             </div>
 
+            <!-- BOÎTE DE TRANSPARENCE VIP -->
+            <div class="vip-transparency">
+                <h4 style="color: #38bdf8;">💎 Ce que l'abonnement inclut :</h4>
+                <ul>
+                    <li>Mes alertes "sniper" en direct pour coordonner nos retraits.</li>
+                    <li>Des analyses détaillées sur les tendances du jeu avant de miser.</li>
+                    <li>L'accès à une communauté sérieuse et motivée, sans spam.</li>
+                </ul>
+
+                <h4 style="color: #ef4444;">⚖️ La Réalité (À savoir avant de payer) :</h4>
+                <ul>
+                    <li>Il n'y a <strong>aucune garantie de gain à 100%</strong>. Le risque zéro n'existe pas.</li>
+                    <li>Les 2000 FCFA couvrent mon temps d'analyse et la gestion du groupe privé, ce n'est pas une formule magique pour devenir riche.</li>
+                    <li>Vous devez accepter de perdre certains jours pour rester rentable sur le long terme.</li>
+                </ul>
+            </div>
+
             <div class="payment-methods">
-                <p>Étape 1 : Effectuez le dépôt</p>
+                <p>Étape 1 : Effectuez le dépôt pour valider votre place</p>
                 <ul>
                     <li><span>Wave</span> <strong>07 16 51 89 96</strong></li>
                     <li><span>Orange Money</span> <strong>07 16 51 89 96</strong></li>
@@ -363,9 +413,9 @@
                 </ul>
             </div>
 
-            <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 0.9rem;">Étape 2 : Cliquez ci-dessous pour envoyer la capture d'écran de votre transfert.</p>
+            <p style="color: #cbd5e1; margin-bottom: 20px; font-size: 0.95rem;">Étape 2 : Cliquez ci-dessous pour m'envoyer la capture d'écran du transfert.</p>
 
-            <a href="https://wa.me/2250716518996?text=Salut,%20je%20viens%20de%20payer%20mes%202000%20FCFA%20pour%20le%20groupe%20VIP.%20Voici%20ma%20capture%20d'écran%20:" class="btn-whatsapp" target="_blank">
+            <a href="https://wa.me/2250716518996?text=Salut,%20je%20viens%20de%20payer%20mes%202000%20FCFA%20pour%20le%20groupe%20VIP.%20J'ai%20lu%20les%20conditions.%20Voici%20ma%20capture%20d'écran%20:" class="btn-whatsapp" target="_blank">
                 📲 Envoyer la preuve sur WhatsApp
             </a>
         </div>
