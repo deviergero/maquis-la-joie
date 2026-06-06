@@ -7,10 +7,10 @@
     <style>
         /* --- RESET ET VARIABLES THEME 1WIN --- */
         :root {
-            --1win-dark: #090F1E;      /* Bleu nuit très profond 1win */
-            --1win-card: rgba(18, 26, 47, 0.7); /* Fond de carte transparent */
-            --1win-blue: #0082FF;      /* Bleu bouton 1win */
-            --1win-cyan: #00E5FF;      /* Cyan pour les effets de lumière */
+            --1win-dark: #090F1E;
+            --1win-card: rgba(18, 26, 47, 0.7);
+            --1win-blue: #0082FF;
+            --1win-cyan: #00E5FF;
             --text-main: #FFFFFF;
             --text-muted: #8B9BB4;
             --success: #00E773;
@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* --- ARRIÈRE-PLAN ANIMÉ (APP FEEL) --- */
+        /* --- ARRIÈRE-PLAN ANIMÉ --- */
         .ambient-light {
             position: fixed;
             width: 50vw;
@@ -54,7 +54,7 @@
             100% { transform: translate(50px, 50px) scale(1.2); }
         }
 
-        /* --- NAVIGATION GLASSMORPHISM --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
@@ -84,7 +84,6 @@
             text-transform: uppercase;
         }
 
-        /* SIGNATURE PERSONNALISÉE */
         .signature-badge {
             background: linear-gradient(135deg, var(--1win-blue), var(--1win-cyan));
             padding: 4px 12px;
@@ -97,7 +96,7 @@
             box-shadow: 0 4px 15px rgba(0, 130, 255, 0.4);
         }
 
-        /* --- STRUCTURE & TYPOGRAPHIE GÉANTE --- */
+        /* --- STRUCTURE GÉNERALE --- */
         section {
             padding: 120px 5% 80px;
             max-width: 1200px;
@@ -105,7 +104,7 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 8vw, 5.5rem); /* S'adapte parfaitement au mobile et PC */
+            font-size: clamp(3rem, 8vw, 5.5rem);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -2px;
@@ -123,7 +122,7 @@
             font-weight: 400;
         }
 
-        /* --- BOUTONS APP DESIGN --- */
+        /* --- BOUTONS --- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -217,7 +216,6 @@
             margin-bottom: 25px;
         }
 
-        /* --- LISTES ET AVANTAGES --- */
         .feature-list { list-style: none; }
         .feature-list li {
             position: relative;
@@ -233,7 +231,36 @@
             content: "✕"; position: absolute; left: 0; color: var(--danger); font-weight: bold; font-size: 1.2rem;
         }
 
-        /* --- CARTE D'ABONNEMENT PREMIUM --- */
+        /* --- FAQ SECTION --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .faq-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .faq-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--1win-cyan);
+            padding: 25px;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .faq-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .faq-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* --- CARTE VIP --- */
         .premium-card {
             background: linear-gradient(180deg, rgba(18, 26, 47, 0.9) 0%, rgba(9, 15, 30, 0.9) 100%);
             max-width: 600px;
@@ -267,7 +294,7 @@
         .price span { font-size: 1.2rem; color: var(--text-muted); font-weight: 500; }
 
         .payment-methods {
-            text-align: left;
+            text-align: center;
             margin: 30px 0;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
@@ -278,14 +305,13 @@
         
         .method-row {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 15px;
             padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
-        .method-row:last-child { border: none; padding-bottom: 0; }
         .method-row span { color: var(--text-muted); }
-        .method-row strong { color: var(--text-main); letter-spacing: 1px; }
+        .method-row strong { color: var(--text-main); letter-spacing: 2px; font-weight: 800; }
 
         .btn-whatsapp {
             background: var(--success);
@@ -298,7 +324,7 @@
             box-shadow: 0 12px 30px rgba(0, 231, 115, 0.5);
         }
 
-        /* --- FOOTER & SIGNATURE FINALE --- */
+        /* --- FOOTER --- */
         footer {
             padding: 60px 5%;
             text-align: center;
@@ -316,7 +342,7 @@
             margin-bottom: 10px;
         }
 
-        /* --- ANIMATIONS SCROLL (JS CLASS) --- */
+        /* --- ANIMATIONS SCROLL --- */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -327,7 +353,7 @@
             transform: translateY(0);
         }
 
-        /* --- MOBILE TWEAKS --- */
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
             section { padding: 100px 20px 60px; }
             .btn { width: 100%; padding: 16px; font-size: 1rem; }
@@ -389,6 +415,29 @@
         </div>
     </section>
 
+    <!-- NOUVELLE SECTION FAQ (Foire Aux Questions) -->
+    <section>
+        <h2 class="section-title reveal" style="text-align: center;">Informations <span>Clés</span></h2>
+        <div class="faq-grid reveal">
+            <div class="faq-card">
+                <h4>Qu'est-ce que le groupe VIP ?</h4>
+                <p>C'est un canal privé de haute qualité où nous jouons en équipe. Je partage mon écran, mes analyses de la courbe en direct, et je donne les signaux exacts d'encaissement.</p>
+            </div>
+            <div class="faq-card">
+                <h4>Ai-je besoin d'un gros capital ?</h4>
+                <p>Non. La stratégie "Sniper" vise des micro-gains répétés. La gestion stricte de la mise est plus importante que le montant de départ.</p>
+            </div>
+            <div class="faq-card">
+                <h4>Est-ce une garantie de succès ?</h4>
+                <p>Absolument pas. Tout investissement comporte un risque de perte. Le groupe sert à structurer votre approche pour limiter les erreurs émotionnelles, pas à créer des miracles.</p>
+            </div>
+            <div class="faq-card">
+                <h4>Comment se passent les retraits ?</h4>
+                <p>Vos gains sont encaissés directement depuis la plateforme 1win vers votre compte Mobile Money. Je ne touche jamais à votre capital de jeu.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- ANALYSE DES RISQUES -->
     <section>
         <div class="grid-2">
@@ -396,7 +445,7 @@
                 <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 20px;">Avantages du Système</h3>
                 <ul class="feature-list success">
                     <li>Interface mobile ultra-réactive.</li>
-                    <li>Retraits instantanés Mobile Money.</li>
+                    <li>Retraits instantanés via Mobile Money.</li>
                     <li>Stratégie de groupe réduisant la volatilité.</li>
                 </ul>
             </div>
@@ -425,19 +474,16 @@
             </div>
 
             <div class="payment-methods">
-                <p>Paiement Sécurisé Mobile Money</p>
+                <p>Paiement Unique Sécurisé</p>
                 <div class="method-row">
-                    <span>Wave</span> <strong>01 05 50 02 32</strong>
+                    <span>Wave Mobile Money</span> 
                 </div>
                 <div class="method-row">
-                    <span>Orange</span> <strong>01 05 50 02 32</strong>
-                </div>
-                <div class="method-row">
-                    <span>MTN</span> <strong>01 05 50 02 32</strong>
+                    <strong>01 05 50 02 32</strong>
                 </div>
             </div>
 
-            <a href="https://wa.me/2250716518996?text=Bonjour%20Romuald,%20je%20viens%20d'effectuer%20le%20paiement%20de%202000%20FCFA%20sur%20le%200105500232.%20Voici%20ma%20capture%20d'écran%20:" class="btn btn-whatsapp" target="_blank">
+            <a href="https://wa.me/2250716518996?text=Bonjour%20Romuald,%20je%20viens%20d'effectuer%20le%20paiement%20de%202000%20FCFA%20sur%20le%20compte%20Wave%20(0105500232).%20Voici%20ma%20capture%20d'écran%20:" class="btn btn-whatsapp" target="_blank">
                 Valider ma place sur WhatsApp
             </a>
         </div>
@@ -449,7 +495,7 @@
         <p style="color: var(--text-muted); font-size: 0.9rem;">Développement & Analyse Stratégique &copy; 2026</p>
     </footer>
 
-    <!-- SCRIPT POUR L'ANIMATION "SCROLL DE MALADE" -->
+    <!-- SCRIPT ANIMATION SCROLL -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
@@ -457,14 +503,13 @@
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.15 // L'élément s'anime quand 15% de sa hauteur est visible
+                threshold: 0.15
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        // Optionnel : on arrête d'observer une fois animé pour plus de perf
                         observer.unobserve(entry.target);
                     }
                 });
