@@ -3,534 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Lucky Jet | Analyse & Stratégie</title>
+    <title>Team Lucky Jet | L'Application</title>
     <style>
-        /* --- RESET & TYPOGRAPHIE PREMIUM --- */
+        /* --- RESET ET VARIABLES THEME 1WIN --- */
         :root {
-            --bg-main: #0a0a0a;
-            --bg-card: #111111;
-            --border-color: #222222;
-            --text-primary: #ededed;
-            --text-secondary: #888888;
-            --accent-blue: #0070f3;
-            --accent-hover: #005bb5;
-            --danger: #e60000;
-            --success: #00a859;
+            --1win-dark: #090F1E;      /* Bleu nuit très profond 1win */
+            --1win-card: rgba(18, 26, 47, 0.7); /* Fond de carte transparent */
+            --1win-blue: #0082FF;      /* Bleu bouton 1win */
+            --1win-cyan: #00E5FF;      /* Cyan pour les effets de lumière */
+            --text-main: #FFFFFF;
+            --text-muted: #8B9BB4;
+            --success: #00E773;
+            --danger: #FF3366;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
+            background-color: var(--1win-dark);
+            color: var(--text-main);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            padding-top: 60px;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- ARRIÈRE-PLAN ANIMÉ (APP FEEL) --- */
+        .ambient-light {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 12s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+        
+        .light-1 { top: -10%; left: -10%; background: var(--1win-blue); }
+        .light-2 { bottom: -10%; right: -10%; background: var(--1win-cyan); animation-delay: -6s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.2); }
+        }
+
+        /* --- NAVIGATION GLASSMORPHISM --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 15px 5%;
+            background: rgba(9, 15, 30, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
+        .brand {
             display: flex;
-            gap: 24px;
+            align-items: center;
+            gap: 10px;
         }
 
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            text-transform: uppercase;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
+        /* SIGNATURE PERSONNALISÉE */
+        .signature-badge {
+            background: linear-gradient(135deg, var(--1win-blue), var(--1win-cyan));
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 130, 255, 0.4);
         }
 
-        /* --- STRUCTURE GLOBALE --- */
+        /* --- STRUCTURE & TYPOGRAPHIE GÉANTE --- */
         section {
-            padding: 100px 5%;
+            padding: 120px 5% 80px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-header {
-            margin-bottom: 60px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5.5rem); /* S'adapte parfaitement au mobile et PC */
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #8B9BB4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 120px 5% 80px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-            max-width: 800px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
             max-width: 600px;
             margin-bottom: 40px;
             font-weight: 400;
         }
 
+        /* --- BOUTONS APP DESIGN --- */
         .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.1rem;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-            text-align: center;
-            border: 1px solid transparent;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
+            cursor: pointer;
+            width: fit-content;
         }
 
         .btn-primary {
-            background-color: var(--text-primary);
-            color: var(--bg-main);
+            background: var(--1win-blue);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 130, 255, 0.4);
         }
 
         .btn-primary:hover {
-            background-color: #ffffff;
-            transform: translateY(-1px);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 130, 255, 0.6);
+            background: #0070e0;
         }
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            margin-left: 15px;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--text-secondary);
-            background-color: var(--bg-card);
-        }
-
-        /* --- GRILLE CONTENU (Image/Texte) --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 60px;
-            }
-        }
-
-        .content-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .content-box p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .media-box img, .media-box video {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            background-color: var(--bg-card);
-        }
-
-        .btn-action {
-            background-color: var(--accent-blue);
-            color: white;
-            margin-top: 10px;
-        }
-        
-        .btn-action:hover {
-            background-color: var(--accent-hover);
-        }
-
-        /* --- AVANTAGES / RISQUES --- */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .specs-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .spec-card {
-            background: var(--bg-card);
+        /* --- CARTES GLASSMORPHISM --- */
+        .glass-card {
+            background: var(--1win-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
             padding: 40px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
         }
 
-        .spec-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
+        .glass-card:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+            transform: translateY(-5px);
         }
 
-        .pros-title { color: var(--success); }
-        .cons-title { color: var(--danger); }
-
-        .spec-list {
-            list-style: none;
-        }
-
-        .spec-list li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .spec-list li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--border-color);
-        }
-
-        /* --- ABONNEMENT VIP --- */
-        .pricing-section {
-            display: flex;
-            justify-content: center;
-        }
-
-        .pricing-card {
-            background: var(--bg-card);
-            width: 100%;
-            max-width: 500px;
-            padding: 50px 40px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .price-tag {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 20px 0;
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 50px;
             letter-spacing: -1px;
         }
 
-        .price-tag span {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            letter-spacing: normal;
+        .section-title span {
+            color: var(--1win-blue);
         }
 
-        .divider {
-            height: 1px;
-            background-color: var(--border-color);
-            margin: 30px 0;
+        /* --- GRILLES RESPONSIVES --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .features-list {
-            list-style: none;
-            margin-bottom: 30px;
+        @media (min-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
         }
 
-        .features-list li {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
+        .media-container {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .features-list li::before {
-            content: "•";
-            margin-right: 10px;
-            color: var(--accent-blue);
+        .media-container img, .media-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
-        .payment-info {
-            background: var(--bg-main);
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
+        .content-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .content-box p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
             margin-bottom: 25px;
         }
 
-        .payment-info p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        /* --- LISTES ET AVANTAGES --- */
+        .feature-list { list-style: none; }
+        .feature-list li {
+            position: relative;
+            padding-left: 30px;
             margin-bottom: 15px;
-            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+        .feature-list.success li::before {
+            content: "✓"; position: absolute; left: 0; color: var(--success); font-weight: bold; font-size: 1.2rem;
+        }
+        .feature-list.danger li::before {
+            content: "✕"; position: absolute; left: 0; color: var(--danger); font-weight: bold; font-size: 1.2rem;
         }
 
-        .payment-networks {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        /* --- CARTE D'ABONNEMENT PREMIUM --- */
+        .premium-card {
+            background: linear-gradient(180deg, rgba(18, 26, 47, 0.9) 0%, rgba(9, 15, 30, 0.9) 100%);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .network-row {
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--1win-blue), var(--1win-cyan));
+        }
+
+        .price-box {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: -1px;
+        }
+
+        .price span { font-size: 1.2rem; color: var(--text-muted); font-weight: 500; }
+
+        .payment-methods {
+            text-align: left;
+            margin: 30px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .payment-methods p { font-size: 0.9rem; text-transform: uppercase; color: var(--1win-cyan); font-weight: 700; margin-bottom: 15px; }
+        
+        .method-row {
             display: flex;
             justify-content: space-between;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
         }
-
-        .network-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .network-row span { color: var(--text-secondary); }
+        .method-row:last-child { border: none; padding-bottom: 0; }
+        .method-row span { color: var(--text-muted); }
+        .method-row strong { color: var(--text-main); letter-spacing: 1px; }
 
         .btn-whatsapp {
-            background-color: var(--success);
-            color: var(--bg-main);
+            background: var(--success);
+            color: #000;
             width: 100%;
-            display: block;
-            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(0, 231, 115, 0.3);
         }
-
         .btn-whatsapp:hover {
-            background-color: #00c066;
+            background: #00ff7f;
+            box-shadow: 0 12px 30px rgba(0, 231, 115, 0.5);
         }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER & SIGNATURE FINALE --- */
         footer {
-            padding: 40px 5%;
-            text-align: left;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 60px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
         }
 
-        /* --- MOBILE RESPONSIVENESS --- */
+        .footer-signature {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--1win-blue), var(--1win-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        /* --- ANIMATIONS SCROLL (JS CLASS) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MOBILE TWEAKS --- */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            
-            section { padding: 60px 20px; }
-            .hero { padding: 100px 20px 60px; }
-            
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.05rem; }
-            
-            .btn { display: block; width: 100%; margin: 0 0 15px 0; }
-            
-            .pricing-card { padding: 30px 20px; }
-            
-            footer { flex-direction: column; text-align: center; gap: 10px; padding: 30px 20px; }
+            section { padding: 100px 20px 60px; }
+            .btn { width: 100%; padding: 16px; font-size: 1rem; }
+            .glass-card { padding: 25px; }
+            nav { padding: 15px 20px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Lumières d'ambiance -->
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+
     <!-- NAVIGATION -->
     <nav>
-        <a href="#" class="logo">Team Lucky Jet.</a>
-        <div class="nav-links">
-            <a href="#plateforme">Plateforme</a>
-            <a href="#analyse">Analyse</a>
-            <a href="#vip">Accès Privé</a>
+        <div class="brand">
+            <div class="brand-logo">LUCKY JET</div>
         </div>
+        <div class="signature-badge">BY ROMUALD</div>
     </nav>
 
     <!-- HERO SECTION -->
-    <header class="hero">
-        <h1>Stratégie et Analyse sur Lucky Jet.</h1>
-        <p>Rejoignez un cercle de joueurs structuré. Accédez à nos sessions en direct, maîtrisez votre gestion du risque et coordonnez vos retraits de manière méthodique.</p>
-        <div class="hero-buttons">
-            <a href="#vip" class="btn btn-primary">Rejoindre le cercle VIP</a>
-            <a href="#plateforme" class="btn btn-outline">Découvrir le fonctionnement</a>
+    <section>
+        <div class="reveal">
+            <h1 class="hero-title">Analyse.<br>Précision.<br>Profit.</h1>
+            <p class="hero-subtitle">Bienvenue dans l'infrastructure de la Team. Des stratégies algorithmiques, des sessions coordonnées et une gestion du risque de niveau professionnel.</p>
+            <a href="#vip" class="btn btn-primary">Rejoindre le canal VIP</a>
         </div>
-    </header>
+    </section>
 
-    <!-- PRÉSENTATION & TUTORIEL -->
-    <section id="plateforme">
-        <div class="section-header">
-            <h2 class="section-title">Infrastructure et Fonctionnement</h2>
-        </div>
+    <!-- INFRASTRUCTURE 1WIN -->
+    <section>
+        <h2 class="section-title reveal">L'Écosystème <span>1win</span></h2>
         
-        <div class="grid-container">
+        <div class="grid-2 reveal">
             <div class="content-box">
-                <h3>Mécanique de jeu</h3>
-                <p>Lucky Jet repose sur la prédiction de l'évolution d'un multiplicateur. Notre approche consiste à ne pas laisser place au hasard, en appliquant une analyse statistique en temps réel pour déterminer les moments optimaux de retrait.</p>
+                <h3>Le Moteur : Lucky Jet</h3>
+                <p>Oubliez la chance. Lucky Jet est une question de timing et de statistiques. Notre système analyse la montée du multiplicateur pour identifier les points de sortie exacts (Sniper strategy) avant le crash.</p>
             </div>
-            <div class="media-box">
-                <img src="luckyjet.jpg" alt="Aperçu de l'interface Lucky Jet">
+            <div class="media-container glass-card" style="padding: 10px;">
+                <img src="luckyjet.jpg" alt="Interface Lucky Jet 1win">
             </div>
         </div>
 
-        <div class="grid-container">
-            <div class="media-box">
+        <div class="grid-2 reveal" style="margin-top: 80px;">
+            <div class="media-container glass-card" style="padding: 10px;">
                 <video controls playsinline>
                     <source src="mavideo.mp4" type="video/mp4">
-                    Votre navigateur ne supporte pas la lecture vidéo.
                 </video>
             </div>
             <div class="content-box">
-                <h3>Configuration du compte</h3>
-                <p>Nous opérons exclusivement sur 1win pour des raisons de stabilité technique et de rapidité d'exécution des transactions via les réseaux de Mobile Money locaux.</p>
-                <p>Visionnez la documentation vidéo ci-contre pour configurer correctement votre espace avant toute session.</p>
-                <a href="https://1win.com/?p=iu9l" target="_blank" class="btn btn-action">
-                    Créer un compte 1win
+                <h3>Initialisation du compte</h3>
+                <p>L'exécution parfaite nécessite la bonne plateforme. 1win garantit la vitesse de transaction requise pour nos méthodes, avec des liaisons directes vers vos comptes locaux.</p>
+                <a href="https://1win.com/?p=iu9l" target="_blank" class="btn" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; margin-top: 10px;">
+                    Ouvrir un compte certifié
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- AVANTAGES / RISQUES -->
-    <section id="analyse">
-        <div class="section-header">
-            <h2 class="section-title">Évaluation des conditions</h2>
-        </div>
-        
-        <div class="specs-grid">
-            <div class="spec-card">
-                <h3 class="pros-title">Points forts du système</h3>
-                <ul class="spec-list">
-                    <li>Exécution rapide des trades depuis n'importe quel appareil mobile.</li>
-                    <li>Liquidité immédiate grâce aux retraits instantanés via Mobile Money.</li>
-                    <li>Réduction de la volatilité personnelle grâce à la prise de décision en groupe.</li>
+    <!-- ANALYSE DES RISQUES -->
+    <section>
+        <div class="grid-2">
+            <div class="glass-card reveal">
+                <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 20px;">Avantages du Système</h3>
+                <ul class="feature-list success">
+                    <li>Interface mobile ultra-réactive.</li>
+                    <li>Retraits instantanés Mobile Money.</li>
+                    <li>Stratégie de groupe réduisant la volatilité.</li>
                 </ul>
             </div>
 
-            <div class="spec-card">
-                <h3 class="cons-title">Avertissement sur les risques</h3>
-                <ul class="spec-list">
-                    <li>Le risque de perte totale du capital engagé est inhérent à la plateforme.</li>
-                    <li>Nécessite un contrôle émotionnel strict. Les écarts stratégiques entraînent des pertes.</li>
-                    <li>Service strictement réservé à un public averti. N'engagez que le capital alloué à ce risque.</li>
+            <div class="glass-card reveal" style="background: rgba(255, 51, 102, 0.05); border-color: rgba(255, 51, 102, 0.2);">
+                <h3 style="color: var(--danger); font-size: 1.5rem; margin-bottom: 20px;">Gestion des Risques</h3>
+                <ul class="feature-list danger">
+                    <li>Perte de capital possible en cas d'erreur.</li>
+                    <li>La discipline émotionnelle est obligatoire.</li>
+                    <li>Service strictement interdit aux mineurs.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- ABONNEMENT VIP -->
+    <!-- ACCÈS VIP -->
     <section id="vip">
-        <div class="section-header">
-            <h2 class="section-title">Accès Privé</h2>
-        </div>
+        <h2 class="section-title reveal" style="text-align: center;">Accès <span>Privé</span></h2>
         
-        <div class="pricing-section">
-            <div class="pricing-card">
-                <h3>Pass Stratégique VIP</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">Accès complet au canal de communication fermé.</p>
-                
-                <div class="price-tag">
-                    2000 FCFA <span>/ 14 jours</span>
-                </div>
-
-                <ul class="features-list">
-                    <li>Sessions d'analyse et signaux d'entrée en temps réel.</li>
-                    <li>Étude des tendances algorithmiques de la plateforme.</li>
-                    <li>Accès à un réseau de joueurs disciplinés.</li>
-                </ul>
-
-                <div class="divider"></div>
-
-                <div class="payment-info">
-                    <p>Coordonnées de dépôt sécurisé</p>
-                    <div class="payment-networks">
-                        <div class="network-row">
-                            <span>Wave</span>
-                            <strong>01 05 50 02 32</strong>
-                        </div>
-                        <div class="network-row">
-                            <span>Orange Money</span>
-                            <strong>01 05 50 02 32</strong>
-                        </div>
-                        <div class="network-row">
-                            <span>MTN Money</span>
-                            <strong>01 05 50 02 32</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="https://wa.me/2250716518996?text=Bonjour,%20je%20viens%20d'effectuer%20le%20paiement%20de%202000%20FCFA%20sur%20le%200105500232%20pour%20l'accès%20VIP.%20Voici%20le%20reçu%20de%20transaction%20:" class="btn btn-whatsapp" target="_blank">
-                    Soumettre la preuve de paiement
-                </a>
+        <div class="glass-card premium-card reveal">
+            <h3>Licence VIP</h3>
+            <p style="color: var(--text-muted);">Accès direct aux signaux en temps réel.</p>
+            
+            <div class="price-box">
+                <div class="price">2000 FCFA <span>/ 14 Jours</span></div>
             </div>
+
+            <div class="payment-methods">
+                <p>Paiement Sécurisé Mobile Money</p>
+                <div class="method-row">
+                    <span>Wave</span> <strong>01 05 50 02 32</strong>
+                </div>
+                <div class="method-row">
+                    <span>Orange</span> <strong>01 05 50 02 32</strong>
+                </div>
+                <div class="method-row">
+                    <span>MTN</span> <strong>01 05 50 02 32</strong>
+                </div>
+            </div>
+
+            <a href="https://wa.me/2250716518996?text=Bonjour%20Romuald,%20je%20viens%20d'effectuer%20le%20paiement%20de%202000%20FCFA%20sur%20le%200105500232.%20Voici%20ma%20capture%20d'écran%20:" class="btn btn-whatsapp" target="_blank">
+                Valider ma place sur WhatsApp
+            </a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <div>&copy; 2026 Team Lucky Jet. Tous droits réservés.</div>
-        <div>Strictement interdit aux mineurs. Jouez de manière responsable.</div>
+        <div class="footer-signature">ROMUALD.</div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Développement & Analyse Stratégique &copy; 2026</p>
     </footer>
 
+    <!-- SCRIPT POUR L'ANIMATION "SCROLL DE MALADE" -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // L'élément s'anime quand 15% de sa hauteur est visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optionnel : on arrête d'observer une fois animé pour plus de perf
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
+        });
+    </script>
 </body>
 </html>
