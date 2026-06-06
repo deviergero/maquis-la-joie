@@ -15,6 +15,7 @@
             --text-muted: #8B9BB4;
             --success: #00E773;
             --danger: #FF3366;
+            --wave-color: #1CE4F8; /* Couleur cyan clair Wave */
         }
 
         * {
@@ -127,6 +128,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
             padding: 18px 32px;
             border-radius: 14px;
             font-weight: 700;
@@ -216,48 +218,57 @@
             margin-bottom: 25px;
         }
 
-        .feature-list { list-style: none; }
-        .feature-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: var(--text-muted);
-        }
-        .feature-list.success li::before {
-            content: "✓"; position: absolute; left: 0; color: var(--success); font-weight: bold; font-size: 1.2rem;
-        }
-        .feature-list.danger li::before {
-            content: "✕"; position: absolute; left: 0; color: var(--danger); font-weight: bold; font-size: 1.2rem;
-        }
-
-        /* --- FAQ SECTION --- */
-        .faq-grid {
+        /* --- TRANSPARENCE & VÉRITÉ GRID (Nouveau) --- */
+        .truth-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 25px;
         }
 
         @media (min-width: 768px) {
-            .faq-grid { grid-template-columns: 1fr 1fr; }
+            .truth-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        .faq-card {
+        .truth-card {
             background: rgba(255, 255, 255, 0.02);
-            border-left: 3px solid var(--1win-cyan);
-            padding: 25px;
-            border-radius: 0 16px 16px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .truth-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
-        .faq-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        .truth-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
             color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .faq-card p {
+        .truth-list {
+            list-style: none;
+        }
+
+        .truth-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
             font-size: 1rem;
             color: var(--text-muted);
+        }
+
+        .truth-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--1win-blue);
+            font-weight: bold;
         }
 
         /* --- CARTE VIP --- */
@@ -298,20 +309,24 @@
             margin: 30px 0;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
-            padding: 20px;
+            padding: 25px;
         }
 
-        .payment-methods p { font-size: 0.9rem; text-transform: uppercase; color: var(--1win-cyan); font-weight: 700; margin-bottom: 15px; }
+        .payment-methods p { font-size: 0.9rem; text-transform: uppercase; color: var(--1win-cyan); font-weight: 700; margin-bottom: 20px; }
         
-        .method-row {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 12px 0;
-            font-size: 1.2rem;
+        .wave-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(28, 228, 248, 0.1);
+            border: 1px solid rgba(28, 228, 248, 0.3);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 1.4rem;
         }
-        .method-row span { color: var(--text-muted); }
-        .method-row strong { color: var(--text-main); letter-spacing: 2px; font-weight: 800; }
+
+        .wave-text { font-weight: 900; letter-spacing: -0.5px; color: var(--text-main); }
+        .wave-number { color: var(--wave-color); font-weight: 900; letter-spacing: 2px; }
 
         .btn-whatsapp {
             background: var(--success);
@@ -359,6 +374,7 @@
             .btn { width: 100%; padding: 16px; font-size: 1rem; }
             .glass-card { padding: 25px; }
             nav { padding: 15px 20px; }
+            .truth-card { padding: 20px; }
         }
     </style>
 </head>
@@ -415,47 +431,57 @@
         </div>
     </section>
 
-    <!-- NOUVELLE SECTION FAQ (Foire Aux Questions) -->
+    <!-- TRANSPARENCE & VÉRITÉS (Analyse approfondie CEO) -->
     <section>
-        <h2 class="section-title reveal" style="text-align: center;">Informations <span>Clés</span></h2>
-        <div class="faq-grid reveal">
-            <div class="faq-card">
-                <h4>Qu'est-ce que le groupe VIP ?</h4>
-                <p>C'est un canal privé de haute qualité où nous jouons en équipe. Je partage mon écran, mes analyses de la courbe en direct, et je donne les signaux exacts d'encaissement.</p>
-            </div>
-            <div class="faq-card">
-                <h4>Ai-je besoin d'un gros capital ?</h4>
-                <p>Non. La stratégie "Sniper" vise des micro-gains répétés. La gestion stricte de la mise est plus importante que le montant de départ.</p>
-            </div>
-            <div class="faq-card">
-                <h4>Est-ce une garantie de succès ?</h4>
-                <p>Absolument pas. Tout investissement comporte un risque de perte. Le groupe sert à structurer votre approche pour limiter les erreurs émotionnelles, pas à créer des miracles.</p>
-            </div>
-            <div class="faq-card">
-                <h4>Comment se passent les retraits ?</h4>
-                <p>Vos gains sont encaissés directement depuis la plateforme 1win vers votre compte Mobile Money. Je ne touche jamais à votre capital de jeu.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ANALYSE DES RISQUES -->
-    <section>
-        <div class="grid-2">
-            <div class="glass-card reveal">
-                <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 20px;">Avantages du Système</h3>
-                <ul class="feature-list success">
-                    <li>Interface mobile ultra-réactive.</li>
-                    <li>Retraits instantanés via Mobile Money.</li>
-                    <li>Stratégie de groupe réduisant la volatilité.</li>
+        <h2 class="section-title reveal" style="text-align: center;">Transparence & <span>Réalités</span></h2>
+        
+        <div class="truth-grid reveal">
+            <div class="truth-card">
+                <h4 style="color: var(--1win-cyan);">Quels sont les avantages du groupe VIP ?</h4>
+                <ul class="truth-list">
+                    <li>Alertes "Sniper" en temps réel pour synchroniser nos encaissements.</li>
+                    <li>Analyse technique et probabiliste de la courbe avant chaque session.</li>
+                    <li>Une communauté structurée qui impose une discipline de fer.</li>
                 </ul>
             </div>
 
-            <div class="glass-card reveal" style="background: rgba(255, 51, 102, 0.05); border-color: rgba(255, 51, 102, 0.2);">
-                <h3 style="color: var(--danger); font-size: 1.5rem; margin-bottom: 20px;">Gestion des Risques</h3>
-                <ul class="feature-list danger">
-                    <li>Perte de capital possible en cas d'erreur.</li>
-                    <li>La discipline émotionnelle est obligatoire.</li>
-                    <li>Service strictement interdit aux mineurs.</li>
+            <div class="truth-card">
+                <h4 style="color: var(--danger);">Quelles sont les réalités du groupe ?</h4>
+                <ul class="truth-list">
+                    <li>Les séries de pertes existent : le risque zéro est un mythe absolu.</li>
+                    <li>La méthode limite la casse, mais ne contrôle pas l'algorithme de 1win.</li>
+                </ul>
+            </div>
+
+            <div class="truth-card">
+                <h4>Pourquoi le groupe est-il payant ?</h4>
+                <ul class="truth-list">
+                    <li>Pour filtrer les curieux et conserver uniquement des joueurs sérieux.</li>
+                    <li>Pour rémunérer le temps d'analyse et de gestion du canal en direct.</li>
+                </ul>
+            </div>
+
+            <div class="truth-card">
+                <h4>Le groupe répondra-t-il à nos attentes ?</h4>
+                <ul class="truth-list">
+                    <li><strong>OUI</strong>, si vous cherchez une méthode de jeu encadrée et mathématique.</li>
+                    <li><strong>NON</strong>, si vous cherchez une formule magique infaillible sans effort.</li>
+                </ul>
+            </div>
+
+            <div class="truth-card">
+                <h4>Pourrai-je m'enrichir avec ce jeu ?</h4>
+                <ul class="truth-list">
+                    <li>C'est un jeu de divertissement. L'avantage mathématique sur le très long terme appartient toujours au casino.</li>
+                    <li>Il permet des bénéfices occasionnels, mais ne remplacera jamais un vrai salaire.</li>
+                </ul>
+            </div>
+
+            <div class="truth-card">
+                <h4>Puis-je l'utiliser pour construire mes projets ?</h4>
+                <ul class="truth-list">
+                    <li><strong>Absolument pas.</strong> Un jeu de hasard ne doit jamais financer un projet de vie (maison, entreprise).</li>
+                    <li>N'utilisez que votre "capital loisir" que vous êtes psychologiquement prêt à perdre.</li>
                 </ul>
             </div>
         </div>
@@ -475,15 +501,22 @@
 
             <div class="payment-methods">
                 <p>Paiement Unique Sécurisé</p>
-                <div class="method-row">
-                    <span>Wave Mobile Money</span> 
-                </div>
-                <div class="method-row">
-                    <strong>01 05 50 02 32</strong>
+                <!-- Badge Wave stylisé avec Logo SVG -->
+                <div class="wave-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="var(--wave-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="var(--wave-color)" stroke-width="2"/>
+                    </svg>
+                    <span class="wave-text">wave</span>
+                    <span class="wave-number">0105500232</span>
                 </div>
             </div>
 
-            <a href="https://wa.me/2250716518996?text=Bonjour%20Romuald,%20je%20viens%20d'effectuer%20le%20paiement%20de%202000%20FCFA%20sur%20le%20compte%20Wave%20(0105500232).%20Voici%20ma%20capture%20d'écran%20:" class="btn btn-whatsapp" target="_blank">
+            <a href="https://wa.me/2250716518996?text=Bonjour%20Romuald,%20je%20viens%20d'effectuer%20le%20paiement%20de%202000%20FCFA%20sur%20le%20compte%20Wave%20(0105500232).%20J'ai%20pris%20connaissance%20des%20risques.%20Voici%20ma%20capture%20d'écran%20:" class="btn btn-whatsapp" target="_blank">
+                <!-- Logo WhatsApp SVG -->
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M12.031 0C5.385 0 0 5.385 0 12.032c0 2.128.552 4.195 1.6 6.024L.25 24l6.103-1.602a11.96 11.96 0 0 0 5.678 1.433h.005c6.645 0 12.03-5.385 12.03-12.032S18.675 0 12.031 0zm0 21.84c-1.782 0-3.528-.48-5.06-1.387l-.36-.214-3.766.988.995-3.668-.235-.373A9.957 9.957 0 0 1 2.022 12.03c0-5.522 4.494-10.016 10.01-10.016 5.518 0 10.01 4.495 10.01 10.016 0 5.522-4.493 10.016-10.01 10.016zm5.5-7.513c-.302-.15-1.787-.882-2.064-.984-.277-.102-.48-.15-.68.15-.202.302-.782.984-.96 1.186-.176.202-.355.226-.657.076-.302-.15-1.275-.47-2.43-1.5-1.008-.895-1.687-2.002-1.884-2.304-.198-.302-.02-.466.13-.616.137-.137.302-.354.453-.532.15-.177.202-.302.302-.503.1-.202.05-.378-.025-.53-.076-.15-.68-1.64-.932-2.247-.246-.593-.496-.513-.68-.522-.176-.01-.377-.01-.58-.01-.2 0-.527.076-.803.378-.276.302-1.056 1.033-1.056 2.52 0 1.488 1.08 2.924 1.233 3.125.15.202 2.128 3.253 5.156 4.558.72.312 1.28.498 1.718.638.723.23 1.38.197 1.9.12.584-.087 1.787-.732 2.038-1.44.25-.707.25-1.312.175-1.44-.075-.126-.275-.2-.576-.35z"/>
+                </svg>
                 Valider ma place sur WhatsApp
             </a>
         </div>
